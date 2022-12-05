@@ -29,7 +29,7 @@
                 <div class="menu-title">SubCategory Menu</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Sub Category</a>
+                <li> <a href="{{ route('subcategory') }}"><i class="bx bx-right-arrow-alt"></i>All Sub Category</a>
                 </li>
             </ul>
         </li>

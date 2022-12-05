@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,16 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/category/{id}' , 'edit')->name('edit.category');
         Route::post('/update/category' , 'update')->name('update.category');
         Route::get('/delete/category/{id}' , 'destroy')->name('delete.category');
+    });
+    //SubCategory All Route
+       Route::controller(SubCategoryController::class)->group(function(){
+        Route::get('/all/subcategory' , 'index')->name('subcategory');
+        Route::get('/add/subcategory' , 'create')->name('add.subcategory');
+        Route::post('/store/subcategory' , 'store')->name('store.subcategory');
+        Route::get('/edit/subcategory/{id}' , 'edit')->name('edit.subcategory');
+        Route::post('/update/subcategory' , 'update')->name('update.subcategory');
+        Route::get('/delete/subcategory/{id}' , 'destroy')->name('delete.subcategory');
+        Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
     });
 
 });   
