@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,16 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::get('/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('update.password');
+
+    //Category All Route
+       Route::controller(CategoryController::class)->group(function(){
+        Route::get('/all/category' , 'index')->name('category');
+        Route::get('/add/category' , 'create')->name('add.category');
+        Route::post('/store/category' , 'store')->name('store.category');
+        Route::get('/edit/category/{id}' , 'edit')->name('edit.category');
+        Route::post('/update/category' , 'update')->name('update.category');
+        Route::get('/delete/category/{id}' , 'destroy')->name('delete.category');
+    });
 
 });   
 

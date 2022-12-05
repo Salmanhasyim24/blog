@@ -4,7 +4,7 @@
             <img src="{{ asset('backend/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Eccomerec Sall</h4>
+            <h4 class="logo-text">Blog Sall</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -13,23 +13,12 @@
     <ul class="metismenu" id="menu">
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home'></i>
-                </div>
-                <div class="menu-title">Brand Menu</div>
-            </a>
-            <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Brand</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
                 <div class="menu-title">Category Menu</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Category</a>
+                <li> <a href="{{ route('category') }}"><i class="bx bx-right-arrow-alt"></i>All Category</a>
                 </li>
             </ul>
         </li>
