@@ -44,7 +44,7 @@
 
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <label for="district_idn">District Indonesia</label>
+                                            <label for="district_idn">Daerah Indonesia</label>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="text" name="district_idn" required class="form-control" />
