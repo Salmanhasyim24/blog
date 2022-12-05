@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\SubDistictController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +64,24 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/subcategory' , 'update')->name('update.subcategory');
         Route::get('/delete/subcategory/{id}' , 'destroy')->name('delete.subcategory');
         Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
+    });
+    //District All Route
+       Route::controller(DistrictController::class)->group(function(){
+        Route::get('/all/district' , 'index')->name('district');
+        Route::get('/add/district' , 'create')->name('add.district');
+        Route::post('/store/district' , 'store')->name('store.district');
+        Route::get('/edit/district/{id}' , 'edit')->name('edit.district');
+        Route::post('/update/district{id}' , 'update')->name('update.district');
+        Route::get('/delete/district/{id}' , 'destroy')->name('delete.district');
+    });
+    //SubDistrict All Route
+       Route::controller(SubDistictController::class)->group(function(){
+        Route::get('/all/subdistrict' , 'index')->name('subdistrict');
+        Route::get('/add/subdistrict' , 'create')->name('add.subdistrict');
+        Route::post('/store/subdistrict' , 'store')->name('store.subdistrict');
+        Route::get('/edit/subdistrict/{id}' , 'edit')->name('edit.subdistrict');
+        Route::post('/update/subdistrict{id}' , 'update')->name('update.subdistrict');
+        Route::get('/delete/subdistrict/{id}' , 'destroy')->name('delete.subdistrict');
     });
 
 });   

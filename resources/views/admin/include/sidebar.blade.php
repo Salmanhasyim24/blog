@@ -84,14 +84,10 @@
                 <div class="menu-title">Shipping Area </div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Division</a>
+                <li> <a href="{{ route('district') }}"><i class="bx bx-right-arrow-alt"></i>All District</a>
                 </li>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All District</a>
+                <li> <a href="{{ route('subdistrict') }}"><i class="bx bx-right-arrow-alt"></i>All SubDistrict</a>
                 </li>
-
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All State</a>
-                </li>
-
             </ul>
         </li>
 
