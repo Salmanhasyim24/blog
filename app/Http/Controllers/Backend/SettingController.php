@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Prayer;
 use App\Models\Seo;
 use App\Models\Social;
 use Illuminate\Http\Request;
@@ -68,5 +69,32 @@ class SettingController extends Controller
 
     	 return Redirect()->route('seo.setting')->with($notification);
    }// end Methos 
+
+      public function PrayerSetting(){
+    	$prayer = Prayer::first();
+    	return view('backend.setting.prayer',compact('prayer'));
+    }
+
+
+    public function PrayerUpdate(Request $request){
+
+        $pray_id = $request->id;
+    	$data = array();
+    	 $data['fajr'] = $request->fajr;
+    	 $data['dzuhur'] = $request->dzuhur;
+    	 $data['ashar'] = $request->ashar;
+    	 $data['maghrib'] = $request->maghrib;
+    	 $data['isya'] = $request->isya;
+    	 $data['jummah'] = $request->jummah;
+    
+        Prayer::findOrFail($pray_id)->update($data);
+
+    	 $notification = array(
+    	 	'message' => 'Prayers Setting Updated Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->route('prayer.setting')->with($notification);
+   }
 
 }

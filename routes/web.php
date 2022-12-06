@@ -105,6 +105,9 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         //Seo Setting
         Route::get('/seo/setting' , 'SeoSetting')->name('seo.setting');
         Route::post('/seo/update/{id}' , 'SeoUpdate')->name('update.seo');
+        //Prayer Setting
+        Route::get('/prayer/setting' , 'PrayerSetting')->name('prayer.setting');
+        Route::post('/prayer/update/{id}' , 'PrayerUpdate')->name('update.prayer');
         
     
     });
