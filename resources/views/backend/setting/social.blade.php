@@ -81,8 +81,6 @@
                                         </div>
                                     </div>
 
-
-
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
@@ -97,41 +95,4 @@
             </div>
         </div>
     </div>
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#myForm').validate({
-                rules: {
-                    category_en: {
-                        required: true,
-                    },
-                    category_idn: {
-                        required: true,
-                    },
-
-                },
-                messages: {
-                    category_en: {
-                        required: 'Please Enter Banner Title',
-                    },
-                    category_idn: {
-                        required: 'Please Enter Banner Title',
-                    },
-
-                },
-                errorElement: 'span',
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                },
-            });
-        });
-    </script>
 @endsection

@@ -108,7 +108,17 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         //Prayer Setting
         Route::get('/prayer/setting' , 'PrayerSetting')->name('prayer.setting');
         Route::post('/prayer/update/{id}' , 'PrayerUpdate')->name('update.prayer');
-        
+        // Live Tv Setting 
+        Route::get('/livetv/setting', [SettingController::class, 'LiveTvSetting'])->name('livetv.setting');
+        Route::post('/livetv/update/{id}', [SettingController::class, 'LivetvUpdate'])->name('update.livetv');
+        Route::get('/livetv/active/{id}', [SettingController::class, 'ActiveSetting'])->name('active.livetv');
+        Route::get('/livetv/inactive/{id}', [SettingController::class, 'InActiveSetting'])->name('inactive.livetv');
+        // Notice Setting 
+        Route::get('/notice/setting', [SettingController::class, 'NoticeSetting'])->name('notice.setting');
+        Route::post('/notice/update/{id}', [SettingController::class, 'NoticeUpdate'])->name('update.notice');
+        Route::get('/notice/active/{id}', [SettingController::class, 'ActiveNoticeSetting'])->name('active.notice');
+        Route::get('/notice/inactive/{id}', [SettingController::class, 'InActiveNotiveSetting'])->name('inactive.notice');
+                
     
     });
 });   

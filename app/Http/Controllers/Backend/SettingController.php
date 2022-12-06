@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\LiveTv;
+use App\Models\Notice;
 use App\Models\Prayer;
 use App\Models\Seo;
 use App\Models\Social;
@@ -96,5 +98,80 @@ class SettingController extends Controller
 
     	 return Redirect()->route('prayer.setting')->with($notification);
    }
+
+   	public function LiveTvSetting(){
+ 		$livetv = LiveTv::first();
+ 		return view('backend.setting.livetv',compact('livetv'));
+ 	}
+
+
+   public function LivetvUpdate(Request $request){
+
+	$livetv_id = $request->id;
+
+   	$data = array();
+
+    	 $data['embed_code'] = $request->embed_code;
+    	 
+		 LiveTv::findOrFail($livetv_id)->update($data);
+
+    	 $notification = array(
+    	 	'message' => 'Live Tv Setting Updated Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->route('livetv.setting')->with($notification);
+   }
+
+   public function ActiveSetting(Request $request, $id)
+   {
+	
+		LiveTv::findOrFail($id)->update(['status' => 1]);
+ 	
+ 		$notification = array(
+    	 	'message' => 'Live Tv Active Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->back()->with($notification);
+ 	}
+
+
+ 		public function InActiveSetting(Request $request, $id){
+ 		
+			LiveTv::findOrFail($id)->update(['status' => 0]);
+
+ 		$notification = array(
+    	 	'message' => 'Live Tv InActive Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->back()->with($notification);
+ 	}
+	
+	public function NoticeSetting(){
+ 		$notice = Notice::first();
+ 		return view('backend.setting.notice',compact('notice'));
+ 	}
+
+
+   public function NoticeUpdate(Request $request){
+
+	$livetv_id = $request->id;
+
+   	$data = array();
+
+    	 $data['embed_code'] = $request->embed_code;
+    	 
+		 LiveTv::findOrFail($livetv_id)->update($data);
+
+    	 $notification = array(
+    	 	'message' => 'Live Tv Setting Updated Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->route('livetv.setting')->with($notification);
+   }
+
 
 }

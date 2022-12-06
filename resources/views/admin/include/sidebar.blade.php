@@ -77,6 +77,8 @@
                 </li>
                 <li> <a href="{{ route('prayer.setting') }}"><i class="bx bx-right-arrow-alt"></i>Prayer Setting</a>
                 </li>
+                <li> <a href="{{ route('livetv.setting') }}"><i class="bx bx-right-arrow-alt"></i>LiveTv Setting</a>
+                </li>
             </ul>
         </li>
 
