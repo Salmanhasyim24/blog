@@ -79,6 +79,8 @@
                 </li>
                 <li> <a href="{{ route('livetv.setting') }}"><i class="bx bx-right-arrow-alt"></i>LiveTv Setting</a>
                 </li>
+                <li> <a href="{{ route('notice.setting') }}"><i class="bx bx-right-arrow-alt"></i>Notice Setting</a>
+                </li>
             </ul>
         </li>
 

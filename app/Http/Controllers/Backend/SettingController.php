@@ -157,21 +157,46 @@ class SettingController extends Controller
 
    public function NoticeUpdate(Request $request){
 
-	$livetv_id = $request->id;
+	$notice_id = $request->id;
 
    	$data = array();
 
-    	 $data['embed_code'] = $request->embed_code;
+    	 $data['notice'] = $request->notice;
     	 
-		 LiveTv::findOrFail($livetv_id)->update($data);
+		 Notice::findOrFail($notice_id)->update($data);
 
     	 $notification = array(
-    	 	'message' => 'Live Tv Setting Updated Successfully',
+    	 	'message' => ' Notice Setting Updated Successfully',
     	 	'alert-type' => 'success'
     	 );
 
-    	 return Redirect()->route('livetv.setting')->with($notification);
+    	 return Redirect()->route('notice.setting')->with($notification);
    }
 
+    public function ActiveNoticeSetting(Request $request, $id)
+   {
+	
+		Notice::findOrFail($id)->update(['status' => 1]);
+ 	
+ 		$notification = array(
+    	 	'message' => 'Notice Active Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->back()->with($notification);
+ 	}
+
+
+ 		public function InActiveNotiveSetting(Request $request, $id){
+ 		
+			Notice::findOrFail($id)->update(['status' => 0]);
+
+ 		$notification = array(
+    	 	'message' => 'Notice InActive Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->back()->with($notification);
+ 	}
 
 }
