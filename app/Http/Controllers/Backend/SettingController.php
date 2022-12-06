@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Seo;
 use App\Models\Social;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class SettingController extends Controller
        
         public function SocialSetting()
     {
-    	$social = Social::first();
+    	$social = Social::firstOrFail();
     	return view('backend.setting.social',compact('social'));
     }
 
@@ -36,5 +37,36 @@ class SettingController extends Controller
 
     	 return Redirect()->route('social.setting')->with($notification);
    }
+
+
+    public function SeoSetting()
+    {
+    	$seo = Seo::firstOrFail();
+    	return view('backend.setting.seo',compact('seo'));
+    }
+
+
+
+    public function SeoUpdate(Request $request){
+
+        $seo_id = $request->id;
+   	$data = array();
+    	 $data['meta_author'] = $request->meta_author;
+    	 $data['meta_title'] = $request->meta_title;
+    	 $data['meta_keyword'] = $request->meta_keyword;
+    	 $data['meta_description'] = $request->meta_description;
+    	 $data['google_analytics'] = $request->google_analytics;
+    	 $data['google_verification'] = $request->google_verification;
+    	 $data['alexa_analytics'] = $request->alexa_analytics;
+    	
+        Seo::FindOrFail($seo_id)->update($data);
+
+    	 $notification = array(
+    	 	'message' => 'Seo Setting Updated Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->route('seo.setting')->with($notification);
+   }// end Methos 
 
 }
