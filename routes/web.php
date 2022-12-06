@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubDistictController;
 use App\Http\Controllers\ProfileController;
@@ -96,7 +97,17 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/get/subcategory/{category_id}' , 'GetSubCategory');
         Route::get('/get/subdistrict/{district_id}' , 'GetSubDistrict');
     });
-
+        //SettingController All Route
+        Route::controller(SettingController::class)->group(function(){
+            // Social Settings 
+        Route::get('/social/setting' , 'SocialSetting')->name('social.setting');
+        Route::post('/social/update/{id}' , 'SocialUpdate')->name('update.social');
+        //Seo Setting
+        Route::get('/seo/setting' , 'SeoSetting')->name('seo.setting');
+        Route::post('/seo/update/{id}' , 'SeoUpdate')->name('update.seo');
+        
+    
+    });
 });   
 
 

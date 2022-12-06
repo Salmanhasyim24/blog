@@ -44,39 +44,9 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
-                </div>
-                <div class="menu-title">Slider Menu</div>
-            </a>
-            <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Slider</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
-                </div>
-                <div class="menu-title">Banner Menu</div>
-            </a>
-            <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Banner</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
-                </div>
-                <div class="menu-title">Coupon System</div>
-            </a>
-            <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Coupon</a>
-                </li>
-            </ul>
-        </li>
+
+
+
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -93,17 +63,17 @@
 
 
 
-        <li class="menu-label">Manage User</li>
+        <li class="menu-label">Manage Setting</li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-message'></i>
+                <div class="parent-icon"><i class='bx bx-support'></i>
                 </div>
-                <div class="menu-title">User Active & Inactive</div>
+                <div class="menu-title">Setting</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Inactive Vendor</a>
+                <li> <a href="{{ route('social.setting') }}"><i class="bx bx-right-arrow-alt"></i> Social Setting</a>
                 </li>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Active Vendor</a>
+                <li> <a href="{{ route('seo.setting') }}"><i class="bx bx-right-arrow-alt"></i>Seo Setting</a>
                 </li>
             </ul>
         </li>
