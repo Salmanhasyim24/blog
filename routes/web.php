@@ -91,6 +91,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/store/post' , 'store')->name('store.post');
         Route::get('/edit/post/{id}' , 'edit')->name('edit.post');
         Route::post('/update/post' , 'update')->name('update.post');
+        Route::post('/update/post/image' , 'updateimage')->name('update.postimage');
         Route::get('/delete/post/{id}' , 'destroy')->name('delete.post');
         Route::get('/get/subcategory/{category_id}' , 'GetSubCategory');
         Route::get('/get/subdistrict/{district_id}' , 'GetSubDistrict');

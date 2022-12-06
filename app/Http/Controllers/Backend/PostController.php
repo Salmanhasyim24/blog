@@ -89,26 +89,27 @@ class PostController extends Controller
 
   }  // END Method 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $districts = District::all();
+        $subcategory = SubCategory::all();
+        $subdistricts = SubDistrict::all();
+        $post = Post::findOrFail($id);
+
+        return view('backend.post.edit', [
+            'categories' => $categories,
+            'districts' => $districts,
+            'subcategory' => $subcategory,
+            'subdistricts' => $subdistricts, 
+            'post' => $post
+        ]);
     }
 
     /**
@@ -118,21 +119,93 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+         $post_id = $request->id;
+
+             Post::findOrFail($post_id)->update([
+
+            'district_id' => $request->district_id,
+            'subdistrict_id' => $request->subdistrict_id,
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'user_id' => Auth::id(),
+
+            'title_en' => $request->title_en,
+            'title_idn' => $request->title_idn,
+            'details_en' => $request->details_en,
+            'details_idn' => $request->details_idn,
+            'tags_en' => $request->tags_en,
+            'tags_idn' => $request->tags_idn,
+
+
+            'headline' => $request->headline,
+            'first_section' => $request->first_section,
+            'first_section_thumbnail' => $request->first_section_thumbnail,
+            'bigthumbnail' => $request->bigthumbnail, 
+
+
+            'post_date' => Carbon::now(),
+        ]);
+
+
+         $notification = array(
+            'message' => 'Product Updated Without Image Successfully',
+            'alert-type' => 'success'
+        );
+
+        return to_route('post')->with($notification); 
+
+    }// End Method 
+
+         public function updateimage(Request $request){
+
+        $post_id = $request->id;
+          $post = Post::findOrFail($post_id);
+        $oldImage = $post->image;
+
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(500,300)->save('upload/postimg/'.$name_gen);
+        $save_url = 'upload/postimg/'.$name_gen;
+
+         if (file_exists($oldImage)) {
+           unlink($oldImage);
+        }
+
+        Post::findOrFail($post_id)->update([
+
+            'image' => $save_url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+       $notification = array(
+            'message' => 'Product Image Post Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification); 
+
+
+    }// End Method 
+   
     public function destroy($id)
     {
-        //
-    }
+
+  $post = Post::findOrFail($id);
+    unlink($post->image);
+
+    Post::findOrFail($id)->delete();
+
+
+    $notification = array(
+        'message' => 'Post Deleted Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notification);
+}
 
     public function GetSubCategory($category_id)
     {
