@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DistrictController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubDistictController;
 use App\Http\Controllers\ProfileController;
@@ -82,6 +83,17 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/subdistrict/{id}' , 'edit')->name('edit.subdistrict');
         Route::post('/update/subdistrict{id}' , 'update')->name('update.subdistrict');
         Route::get('/delete/subdistrict/{id}' , 'destroy')->name('delete.subdistrict');
+    });
+        //Post All Route
+       Route::controller(PostController::class)->group(function(){
+        Route::get('/all/post' , 'index')->name('post');
+        Route::get('/add/post' , 'create')->name('add.post');
+        Route::post('/store/post' , 'store')->name('store.post');
+        Route::get('/edit/post/{id}' , 'edit')->name('edit.post');
+        Route::post('/update/post' , 'update')->name('update.post');
+        Route::get('/delete/post/{id}' , 'destroy')->name('delete.post');
+        Route::get('/get/subcategory/{category_id}' , 'GetSubCategory');
+        Route::get('/get/subdistrict/{district_id}' , 'GetSubDistrict');
     });
 
 });   

@@ -37,10 +37,10 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-cart'></i>
                 </div>
-                <div class="menu-title">Product Menu</div>
+                <div class="menu-title">Post Menu</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Product</a>
+                <li> <a href="{{ route('post') }}"><i class="bx bx-right-arrow-alt"></i>All Product</a>
                 </li>
             </ul>
         </li>
