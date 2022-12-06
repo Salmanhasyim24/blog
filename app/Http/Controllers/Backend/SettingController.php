@@ -8,6 +8,7 @@ use App\Models\Notice;
 use App\Models\Prayer;
 use App\Models\Seo;
 use App\Models\Social;
+use App\Models\Website;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -198,5 +199,48 @@ class SettingController extends Controller
 
     	 return Redirect()->back()->with($notification);
  	}
+
+		public function WebsiteSetting(){
+ 		$website = Website::all();
+ 		return view('backend.website.index',compact('website'));
+ 	}
+
+
+ 	public function AddWebsiteSetting(){
+ 		return view('backend.website.create');
+ 	}
+
+
+
+ 	public function StoreWebsite(Request $request){
+
+ 		$data = array();
+    	 $data['website_name'] = $request->website_name;
+    	 $data['website_link'] = $request->website_link;
+    	 
+    	//  DB::table('websites')->insert($data);
+		Website::insert($data);
+
+    	 $notification = array(
+    	 	'message' => 'Website Link Updated Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->route('all.website')->with($notification);
+ 	}
+
+	public function DeleteWebsite($id)
+	{
+		Website::findOrFail($id)->delete();
+
+    	 $notification = array(
+    	 	'message' => 'Website Deleted Successfully',
+    	 	'alert-type' => 'success'
+    	 );
+
+    	 return Redirect()->back()->with($notification);
+
+	}
+
 
 }

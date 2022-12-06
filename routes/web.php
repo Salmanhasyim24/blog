@@ -109,17 +109,20 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/prayer/setting' , 'PrayerSetting')->name('prayer.setting');
         Route::post('/prayer/update/{id}' , 'PrayerUpdate')->name('update.prayer');
         // Live Tv Setting 
-        Route::get('/livetv/setting', [SettingController::class, 'LiveTvSetting'])->name('livetv.setting');
-        Route::post('/livetv/update/{id}', [SettingController::class, 'LivetvUpdate'])->name('update.livetv');
-        Route::get('/livetv/active/{id}', [SettingController::class, 'ActiveSetting'])->name('active.livetv');
-        Route::get('/livetv/inactive/{id}', [SettingController::class, 'InActiveSetting'])->name('inactive.livetv');
+        Route::get('/livetv/setting', 'LiveTvSetting')->name('livetv.setting');
+        Route::post('/livetv/update/{id}', 'LivetvUpdate')->name('update.livetv');
+        Route::get('/livetv/active/{id}', 'ActiveSetting')->name('active.livetv');
+        Route::get('/livetv/inactive/{id}', 'InActiveSetting')->name('inactive.livetv');
         // Notice Setting 
-        Route::get('/notice/setting', [SettingController::class, 'NoticeSetting'])->name('notice.setting');
-        Route::post('/notice/update/{id}', [SettingController::class, 'NoticeUpdate'])->name('update.notice');
-        Route::get('/notice/active/{id}', [SettingController::class, 'ActiveNoticeSetting'])->name('active.notice');
-        Route::get('/notice/inactive/{id}', [SettingController::class, 'InActiveNotiveSetting'])->name('inactive.notice');
-                
-    
+        Route::get('/notice/setting', 'NoticeSetting')->name('notice.setting');
+        Route::post('/notice/update/{id}', 'NoticeUpdate')->name('update.notice');
+        Route::get('/notice/active/{id}', 'ActiveNoticeSetting')->name('active.notice');
+        Route::get('/notice/inactive/{id}', 'InActiveNotiveSetting')->name('inactive.notice');
+        // Website LiNK Route 
+        Route::get('/website/setting', 'WebsiteSetting')->name('all.website');
+        Route::get('/add/website', 'AddWebsiteSetting')->name('add.website');
+        Route::post('/store/website', 'StoreWebsite')->name('store.website');
+        Route::get('/delete/website{id}', 'DeleteWebsite')->name('delete.website');
     });
 });   
 
