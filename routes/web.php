@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdsController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\GallerControlller;
@@ -8,6 +9,8 @@ use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubDistictController;
+use App\Http\Controllers\Backend\WebsiteSettingController;
+use App\Http\Controllers\Frotend\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -137,7 +140,28 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/store/video',  'StoreVideo')->name('store.video'); 
         Route::get('/delete/video{id}',  'DeleteVideo')->name('delete.video');
     });
-});   
+
+    Route::controller(AdsController::class)->group(function(){
+        Route::get('/list/add',  'ListAds')->name('list.add');
+        Route::get('/add/ads',  'AddAds')->name('add.ads');
+        Route::post('/store/ads',  'StoreAds')->name('store.ads');
+         Route::get('/delete/ads{id}',  'DeleteAds')->name('delete.ads');
+    });
+    Route::controller(WebsiteSettingController::class)->group(function(){
+        Route::get('/web/setting',  'WebSetting')->name('website.setting');
+        Route::post('/update/websetting/{id}',  'UpdateWebSetting')->name('update.websetting');
+    });
+
+
+});   //end admin Middleware
+
+
+Route::controller(DetailController::class)->group(function(){
+    
+    Route::get('/lang/indonesia', 'Indonesia')->name('lang.indonesia');
+    Route::get('/lang/english', 'English')->name('lang.english');
+
+});
 
 
 

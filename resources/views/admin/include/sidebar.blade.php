@@ -81,7 +81,11 @@
                 </li>
                 <li> <a href="{{ route('notice.setting') }}"><i class="bx bx-right-arrow-alt"></i>Notice Setting</a>
                 </li>
-                <li> <a href="{{ route('all.website') }}"><i class="bx bx-right-arrow-alt"></i>All Web Setting</a>
+                <li> <a href="{{ route('all.website') }}"><i class="bx bx-right-arrow-alt"></i>All Web List</a>
+                </li>
+                <li> <a href="{{ route('list.add') }}"><i class="bx bx-right-arrow-alt"></i>All Web List</a>
+                </li>
+                <li> <a href="{{ route('website.setting') }}"><i class="bx bx-right-arrow-alt"></i>All WebSetting</a>
                 </li>
             </ul>
         </li>
