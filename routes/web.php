@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DistrictController;
+use App\Http\Controllers\Backend\GallerControlller;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -123,6 +124,18 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/add/website', 'AddWebsiteSetting')->name('add.website');
         Route::post('/store/website', 'StoreWebsite')->name('store.website');
         Route::get('/delete/website{id}', 'DeleteWebsite')->name('delete.website');
+    });
+    Route::controller(GallerControlller::class)->group(function(){
+          // Photo Gallery Routes 
+        Route::get('/photo/gallery',  'PhotoGallery')->name('photo.gallery');
+        Route::get('/add/photo',  'AddPhoto')->name('add.photo');
+        Route::post('/store/photo',  'StorePhoto')->name('store.photo');
+        Route::get('/delete/photo{id}',  'DeletePhoto')->name('delete.photo');
+        // Video Gallery Routes 
+        Route::get('/video/gallery',  'VideoGallery')->name('video.gallery');
+        Route::get('/add/video',  'AddVideo')->name('add.video');
+        Route::post('/store/video',  'StoreVideo')->name('store.video'); 
+        Route::get('/delete/video{id}',  'DeleteVideo')->name('delete.video');
     });
 });   
 

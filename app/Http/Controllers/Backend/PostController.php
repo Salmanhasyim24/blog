@@ -193,7 +193,7 @@ class PostController extends Controller
     public function destroy($id)
     {
 
-  $post = Post::findOrFail($id);
+        $post = Post::findOrFail($id);
     unlink($post->image);
 
     Post::findOrFail($id)->delete();
