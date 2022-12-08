@@ -78,13 +78,16 @@ class DetailController extends Controller
     }
 
     public function SinglePost($id){
+      Post::find($id);
     $post = Db::table('posts')
             ->join('categories','posts.category_id','categories.id')
-            ->join('subcategories','posts.subcategory_id','subcategories.id')
+            ->join('sub_categories','posts.subcategory_id','sub_categories.id')
             ->join('users','posts.user_id','users.id')
-            ->select('posts.*','categories.category_en','categories.category_idn','subcategories.subcategory_en','subcategories.subcategory_idn','users.name')
+            ->select('posts.*','categories.category_en','categories.category_idn','sub_categories.subcategory_en','sub_categories.subcategory_idn','users.name')
             ->where('posts.id',$id)->first();
             return view('frontend.single_post',compact('post'));
+          //  $post = Post::with([
+          //   'category','subcategory', 'user'])->where();  
 
  }
 

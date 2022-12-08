@@ -108,7 +108,7 @@
 
                         <div class="col-md-6 col-sm-6">
                             <div class="bg-one">
-                                <div class="cetagory-title"><a href="#">
+                                <div class="cetagory-title"><a href="{{ URL::to('view/post/' . $firstcategory->id) }}">
                                         @if (session()->get('lang') == 'english')
                                             {{ $firstcategory->category_en }}
                                         @else
@@ -126,8 +126,8 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="top-news">
-                                            <a href="#"><img src="{{ asset($firstcatpostbig->image) }}"
-                                                    alt="Notebook"></a>
+                                            <a href="{{ URL::to('view/post/' . $firstcatpostbig->id) }}"><img
+                                                    src="{{ asset($firstcatpostbig->image) }}" alt="Notebook"></a>
                                             <h4 class="heading-02">
                                                 <a href="{{ URL::to('view/post/' . $firstcatpostbig->id) }}">
                                                     @if (session()->get('lang') == 'english')
@@ -144,7 +144,8 @@
                                     <div class="col-md-6 col-sm-6">
                                         @foreach ($firstcatpostsmall as $row)
                                             <div class="image-title">
-                                                <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                                <a href="{{ URL::to('view/post/' . $row->id) }}"><img
+                                                        src="{{ asset($row->image) }}" alt="Notebook"></a>
                                                 <h4 class="heading-03"><a href="{{ URL::to('view/post/' . $row->id) }}">
                                                         @if (session()->get('lang') == 'english')
                                                             {{ $row->title_en }}
@@ -284,15 +285,12 @@
                     <!-- facebook-page-start -->
                     <div class="cetagory-title-03">Facebook </div>
                     <div id="fb-root"></div>
-                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0"
-                        nonce="781aQ9rY"></script>
+                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0"
+                        nonce="V74kA8v2"></script>
 
-                    <div class="fb-page" data-href="https://www.facebook.com/kaziariyanbd/" data-tabs="" data-width="270"
+                    <div class="fb-page" data-href="https://www.facebook.com/nam.las.984" data-tabs="" data-width="270"
                         data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
-                        data-show-facepile="false">
-                        <blockquote cite="https://www.facebook.com/kaziariyanbd/" class="fb-xfbml-parse-ignore"><a
-                                href="https://www.facebook.com/kaziariyanbd/">Kazi Ariyan</a></blockquote>
-                    </div>
+                        data-show-facepile="false"></div>
 
 
 
@@ -1082,8 +1080,8 @@
                     </div>
 
                     <!--=======================================
-                                                                                                                                                    Video Gallery clickable jquary  start
-                                                                                                                                                ========================================-->
+                                                                                                                                                                                        Video Gallery clickable jquary  start
+                                                                                                                                                                                    ========================================-->
 
                     <script>
                         var slideIndex = 1;
@@ -1119,8 +1117,8 @@
                     </script>
 
                     <!--=======================================
-                                                                                                                                                    Video Gallery clickable  jquary  close
-                                                                                                                                                =========================================-->
+                                                                                                                                                                                        Video Gallery clickable  jquary  close
+                                                                                                                                                                                    =========================================-->
 
                 </div>
                 <div class="col-md-4 col-sm-5">
@@ -1219,7 +1217,7 @@
     </section><!-- /.gallery-section-close -->
 
     <!--
-                                                                                                                                 This is for District  -->
+                                                                                                                                                                     This is for District  -->
     <script type="text/javascript">
         $(document).ready(function() {
             $('select[name="district_id"]').on('change', function() {

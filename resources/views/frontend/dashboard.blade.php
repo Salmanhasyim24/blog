@@ -25,7 +25,7 @@
     <link href=" {{ asset('frontend/assets/style.css') }}" rel="stylesheet">
 
     <script type="text/javascript"
-        src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa1eefe420a440019cbdce5&product=inline-share-buttons"
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=6391f24c44c4120012bde3f0&product=inline-share-buttons&source=platform"
         async="async"></script>
 
 

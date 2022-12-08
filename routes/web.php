@@ -171,11 +171,4 @@ Route::controller(DetailController::class)->group(function(){
     Route::get('/search/district',  'SearchDistrict')->name('searchby.districts');
     });
 
-
-
-
-
-
-
-
 require __DIR__.'/auth.php';
