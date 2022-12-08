@@ -33,8 +33,8 @@
                         <thead>
                             <tr>
                                 <th>Sl</th>
-                                <th>Category English </th>
-                                <th>Category Indonesia </th>
+                                <th>Name Website</th>
+                                <th>Link Website</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -60,8 +60,8 @@
                         <tfoot>
                             <tr>
                                 <th>Sl</th>
-                                <th>Category English </th>
-                                <th>Category Indonesia </th>
+                                <th>Name Website</th>
+                                <th>Link Website</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

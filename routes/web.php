@@ -26,9 +26,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [DetailController::class, 'home'])->name('home');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -160,8 +161,15 @@ Route::controller(DetailController::class)->group(function(){
     
     Route::get('/lang/indonesia', 'Indonesia')->name('lang.indonesia');
     Route::get('/lang/english', 'English')->name('lang.english');
-
-});
+    // Single Post Page 
+    Route::get('/view/post/{id}',  'SinglePost');
+    // Post Category and Subcategory Pages 
+    Route::get('/catpost/{id}/{category_en}',  'CatPost');
+    Route::get('/subcatpost/{id}/{subcategory_en}',  'SubCatPost');
+    // Search District In Home page 
+    Route::get('/get/subdistrict/frontend/{district_id}',  'GetSubDist');
+    Route::get('/search/district',  'SearchDistrict')->name('searchby.districts');
+    });
 
 
 

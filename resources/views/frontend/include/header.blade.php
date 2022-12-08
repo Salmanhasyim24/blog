@@ -6,7 +6,7 @@
     $horizontal = DB::table('ads')
         ->where('type', 2)
         ->first();
-    $websitesetting = DB::table('websitesettings')->first();
+    $websitesetting = DB::table('website_settings')->first();
     
 @endphp
 
@@ -38,8 +38,8 @@
                             <div id="navbarCollapse" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
                                     <li><a href="{{ URL::to('/') }}">
-                                            @if (session()->get('lang') == 'hindi')
-                                                घर
+                                            @if (session()->get('lang') == 'indonesia')
+                                                HOME
                                             @else
                                                 HOME
                                             @endif
@@ -47,15 +47,15 @@
 
                                     @foreach ($category as $row)
                                         @php
-                                            $subcategory = DB::table('subcategories')
+                                            $subcategory = DB::table('sub_categories')
                                                 ->where('category_id', $row->id)
                                                 ->get();
                                         @endphp
 
                                         <li class="dropdown">
                                             <a href="{{ URL::to('catpost/' . $row->id . '/' . $row->category_en) }}">
-                                                @if (session()->get('lang') == 'hindi')
-                                                    {{ $row->category_hin }}
+                                                @if (session()->get('lang') == 'indonesia')
+                                                    {{ $row->category_idn }}
                                                 @else
                                                     {{ $row->category_en }}
                                                 @endif
@@ -67,8 +67,8 @@
                                                 @foreach ($subcategory as $row)
                                                     <li><a
                                                             href="{{ URL::to('subcatpost/' . $row->id . '/' . $row->subcategory_en) }}">
-                                                            @if (session()->get('lang') == 'hindi')
-                                                                {{ $row->subcategory_hin }}
+                                                            @if (session()->get('lang') == 'indonesia')
+                                                                {{ $row->subcategory_idn }}
                                                             @else
                                                                 {{ $row->subcategory_en }}
                                                             @endif
@@ -90,11 +90,11 @@
                     <ul>
                         <!-- version-start -->
 
-                        @if (session()->get('lang') == 'hindi')
+                        @if (session()->get('lang') == 'indonesia')
                             <li class="version"><a href="{{ route('lang.english') }}"><B>ENGLISH</B></a></li>
                             &nbsp;&nbsp;&nbsp;
                         @else
-                            <li class="version"><a href="{{ route('lang.hindi') }}"><B>HINDI</B></a></li>
+                            <li class="version"><a href="{{ route('lang.indonesia') }}"><B>INDONESIA</B></a></li>
                             &nbsp;&nbsp;&nbsp;
                         @endif
 
@@ -210,6 +210,7 @@
     $headline = DB::table('posts')
         ->where('posts.headline', 1)
         ->limit(3)
+        ->inRandomOrder()
         ->get();
     $notice = DB::table('notices')->first();
 @endphp
@@ -220,7 +221,7 @@
                 @if (session()->get('lang') == 'english')
                     Breaking News :
                 @else
-                    ताज़ा खबर :
+                    Berita Terkini :
                 @endif
 
             </div>
@@ -230,7 +231,7 @@
                         @if (session()->get('lang') == 'english')
                             * {{ $row->title_en }}
                         @else
-                            * {{ $row->title_hin }}
+                            * {{ $row->title_idn }}
                         @endif
                     @endforeach
 
@@ -250,7 +251,7 @@
                     @if (session()->get('lang') == 'english')
                         Notice :
                     @else
-                        नोटिस :
+                        Notice :
                     @endif
 
                 </div>

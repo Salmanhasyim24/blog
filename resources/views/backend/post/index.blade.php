@@ -68,13 +68,13 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <<th>Sl</th>
-                                    <th> Post Title </th>
-                                    <th> Category </th>
-                                    <th> District </th>
-                                    <th> Image </th>
-                                    <th> Post Date </th>
-                                    <th> Action </th>
+                                <th>Sl</th>
+                                <th> Post Title </th>
+                                <th> Category </th>
+                                <th> District </th>
+                                <th> Image </th>
+                                <th> Post Date </th>
+                                <th> Action </th>
                             </tr>
                         </tfoot>
                     </table>
